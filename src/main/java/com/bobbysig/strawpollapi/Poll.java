@@ -14,7 +14,7 @@ public class Poll {
 
         private final String name;
 
-        private DupcheckValue(String name) {
+        DupcheckValue(String name) {
             this.name = name;
         }
 
@@ -23,19 +23,23 @@ public class Poll {
         }
     }
 
-    public int id = -1;
-    public String title;
-    public List<String> options;
-    public List<Integer> votes;
-    public final boolean multi = false;
-    public final DupcheckValue dupcheck = DupcheckValue.normal;
-    public final boolean captcha = false;
+    int id = -1;
+    String title;
+    List<String> options;
+    List<Integer> votes;
+    final boolean multi = false;
+    final DupcheckValue dupcheck = DupcheckValue.normal;
+    final boolean captcha = false;
 
     public Poll(String title, List<String> options) {
         this.title = title;
         this.options = options;
     }
 
+    /**
+     * Returns the ID of this Poll given by the API.
+     * @return The ID of this Poll in the API, or -1 if this Poll isn't associated with the API yet.
+     */
     public int getId() {
         return id;
     }
@@ -71,7 +75,7 @@ public class Poll {
 
         Poll poll = (Poll) o;
 
-        return id == poll.id;
+        return id != -1 && id == poll.id;
     }
 
     @Override

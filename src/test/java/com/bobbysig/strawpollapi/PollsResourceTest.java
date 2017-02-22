@@ -57,9 +57,9 @@ public class PollsResourceTest {
 
     @Test
     public void post() throws Exception {
-        String[] optionsArr = {"Option #1", "Option #2", "Turnip"};
+        String[] optionsArr = {"Yes", "No", "Turnip"};
         List<String> options = Arrays.asList(optionsArr);
-        Poll testPoll = new Poll("A Lurchbot Test Poll", options);
+        Poll testPoll = new Poll("Are the options in this poll dumb?", options);
         Poll actual = pollsResource
                 .post(testPoll)
                 .exceptionally(t -> {
