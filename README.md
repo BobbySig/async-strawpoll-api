@@ -1,2 +1,3 @@
-# async-strawpoll-api
-An asynchronous wrapper for the strawpoll.me API.
+# Async Straw Poll API
+
+An asynchronous Java wrapper for [strawpoll.me's](http://strawpoll.me) API.
