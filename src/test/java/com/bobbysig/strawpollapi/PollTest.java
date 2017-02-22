@@ -1,5 +1,8 @@
 package com.bobbysig.strawpollapi;
 
+import org.junit.Test;
+import org.junit.Before;
+
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -16,16 +19,28 @@ public class PollTest {
 
     private Poll p;
 
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
         p = new Poll(testTitle, Arrays.asList(testOptions));
         p.id = testId;
         p.votes = Arrays.asList(testVotes);
     }
 
-    @org.junit.Test
-    public void equalsHashCodeTest() throws Exception {
+    @Test
+    public void equalsHashCodeNegativeIdTest() throws Exception {
         Poll p2 = new Poll(testTitle, Arrays.asList(testOptions));
+        Poll p3 = new Poll(testTitle, Arrays.asList(testOptions));
+
+        assertNotEquals("Different Polls instances with ID's of -1 should not be considered equal",
+                p2, p3);
+        assertEquals("2 Poll instances should be equal when they are actually the same Poll instance.",
+                p2, p2);
+    }
+
+    @Test
+    public void equalsHashCodePositiveIdTest() throws Exception {
+        Poll p2 = new Poll(testTitle, Arrays.asList(testOptions));
+
         p2.id = testId;
         p2.votes = Arrays.asList(testVotes);
         assertTrue("Polls with identical ID's should have the same hash code",

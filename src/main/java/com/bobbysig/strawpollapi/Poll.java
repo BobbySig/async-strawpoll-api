@@ -75,7 +75,9 @@ public class Poll {
 
         Poll poll = (Poll) o;
 
-        return id != -1 && id == poll.id;
+        if (id != -1)
+            return id == poll.id;
+        return this == poll;
     }
 
     @Override
